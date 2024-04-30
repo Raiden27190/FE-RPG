@@ -1,0 +1,8 @@
+<form>
+    <div class="flex-parent-element bottom-border">
+        <div class="flex-child-element">{{statName}} : </div>
+        <div class="flex-child-element">{{mainStat?.toString()}}</div>
+        <div class="permanent-boost" *ngIf="(permanentBonus)">+ {{permanentBonus.toString()}}</div><div class="bonus-placeholder" *ngIf="(!permanentBonus)">&nbsp;</div>
+        <div class="item-boost" *ngIf="(itemStatBonus)">+ {{itemStatBonus.toString()}}</div><div class="bonus-placeholder" *ngIf="(!itemStatBonus)">&nbsp;</div>
+    </div>
+</form>

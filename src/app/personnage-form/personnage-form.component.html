@@ -1,0 +1,11 @@
+<div class="container">
+    <p>Personnage :</p>
+    <div>Nom : {{personnage.nom}}</div>
+    <div>Age : {{personnage.age}} ans</div>
+    <div>Taille : {{personnage.taille}} cm</div>
+    <div>Classe : {{personnage.job.name}}</div>
+    <div>Niveau : {{personnage.niveau}}</div>
+    <p>Stats :</p>
+    <app-stats [permanentStats]="personnage.currentStats" [permanentBoosts]="personnage.permanentBoosts"></app-stats>
+    <button name="levelUp" (click)="onLevelUpClick()">Niveau +</button>
+</div>

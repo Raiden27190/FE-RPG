@@ -1,0 +1,33 @@
+.flex-parent-element {
+    display: flex;
+  }
+  
+  .flex-child-element {
+    flex: 1;
+    margin: 2px;
+  }
+  
+  .flex-child-element:first-child {
+    margin-right: 20px;
+  }
+
+  .bottom-border{
+    border-width: 0px;
+    border-style: solid;
+    border-bottom-width: 2px;
+    border-image: linear-gradient(90deg,blue, green) 1;
+  }
+
+  .permanent-boost{
+    color: green;
+    margin: 2px;
+  }
+  .item-boost{
+    color: darkgreen;
+    margin: 2px;
+  }
+  .bonus-placeholder{
+    margin: 2px;
+    margin-left: 20px;
+
+  }
