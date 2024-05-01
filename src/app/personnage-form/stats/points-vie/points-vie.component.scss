@@ -1,20 +1,70 @@
-.hp-flex-parent-element {
-    display: flex;
-    max-width: 580px;
-
-  }
-  
-  .hp-flex-child-element {
-    flex: 1;
-    margin: 2px;
-  }
-  
-  .hp-flex-child-element:first-child {
-    margin-right: 20px;
+.hp-grid-parent-element {
+    display: grid;
+    max-width: 480px;
+    grid-template-areas: 
+      "a b b b c d d d"
+      "a b b b c e f g" ;
+      grid-template-rows: 40px 20px;
   }
 
+  .hp-grid-label{
+    grid-area: a;
+    justify-self: left;
+    align-content: center;
+    padding-left: 2px;
+  }
+
+  .hp-grid-current{
+    grid-area: b;
+    justify-self: center;
+    align-content: center;
+  }
+
+  .hp-grid-separator{
+    grid-area: c;
+    justify-self: center;
+    align-content: center;
+  }
+
+  .hp-grid-total-max{
+    grid-area: d;
+    justify-self: center;
+    align-self: center;
+  }
+  .hp-grid-stat-max{
+    grid-area: e;
+    justify-self: right;
+  } 
+  .hp-grid-plus{
+    grid-area: f;
+    justify-self: center;
+  } 
+   .hp-grid-bonus-max{
+    grid-area: g;
+    justify-self: left;
+  }
+  
   .hp-border{
     border: 2px;
     border-width: 2px;
     border-style: solid;
+    border-color: rgb(255, 0, 0);
   }
+
+  .hp-current{
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .hp-stat{
+    font-size: 12px;
+  }
+
+  .hp-bonus{
+    color:green
+  }
+
+input{
+   box-sizing: border-box;
+   width: fit-content;
+}

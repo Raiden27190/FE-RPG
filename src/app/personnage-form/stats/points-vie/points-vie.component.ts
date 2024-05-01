@@ -1,9 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-points-vie',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './points-vie.component.html',
   styleUrl: './points-vie.component.scss'
 })
@@ -15,4 +17,5 @@ export class PointsVieComponent {
     return this.pvMaxStat + this.pvMaxBonus
   }
 
+  @Output() pvActuelsChange = new EventEmitter<number>();
 }
