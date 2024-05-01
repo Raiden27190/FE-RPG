@@ -31,7 +31,7 @@
     </section>
     <button name="changeJob"
         (click)="onChangeJobCLick()"
-        [disabled]="personnage.niveau<personnage.job.niveauMax || !nextJob">
+        [disabled]="personnage.niveau<personnage.job.niveauMax || !nextJob || !personnage.job.jobsSuivants.length">
         Changer Job
 
     </button>
