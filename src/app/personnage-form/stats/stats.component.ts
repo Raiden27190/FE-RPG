@@ -13,10 +13,8 @@ export class StatsComponent implements OnInit {
   ngOnInit(): void {
     // rien
   }
-  @Input() pvActuels:number|null = null;
   @Input() permanentStats:Stats|null = null;
   @Input() permanentBoosts:Stats|null = null;
-  @Input() itemBonus:Stats|null = null;
-
+  @Input() itemBonus:Stats|undefined;
 
 }

@@ -1,12 +1,4 @@
-export class Objet{
+export interface Objet{
     nom:string;
-    effet:string;
-
-    /**
-     * constructeur
-     */
-    constructor(nom: string, effet: string) {
-        this.nom=nom;
-        this.effet=effet;
+    effet?:string;
     }
-}

@@ -1,11 +1,28 @@
-<div class="container">
-    <p>Personnage :</p>
-    <div>Nom : {{personnage.nom}}</div>
-    <div>Age : {{personnage.age}} ans</div>
-    <div>Taille : {{personnage.taille}} cm</div>
-    <div>Classe : {{personnage.job.name}}</div>
-    <div>Niveau : {{personnage.niveau}}</div>
+<section class="container">
+    <h1>Personnage :</h1>
+    <ul>
+        <li>Nom : {{personnage.nom}}</li>
+        <li>Age : {{personnage.age}} ans</li>
+        <li>Taille : {{personnage.taille}} cm</li>
+        <li>Classe : {{personnage.job.name}}</li>
+        <li>Niveau : {{personnage.niveau}}</li>
+    </ul>
     <p>Stats :</p>
-    <app-stats [permanentStats]="personnage.currentStats" [permanentBoosts]="personnage.permanentBoosts"></app-stats>
-    <button name="levelUp" (click)="onLevelUpClick()">Niveau +</button>
-</div>
+    <app-points-vie 
+        [pvActuels]="personnage.pVActuels" 
+        [pvMaxStat]="personnage.statsActuelles.pointsVie" 
+        [pvMaxBonus]="personnage.permanentBoosts.pointsVie">
+    </app-points-vie>
+    <app-stats 
+        [permanentStats]="personnage.statsActuelles"
+        [permanentBoosts]="personnage.permanentBoosts"
+        [itemBonus]="personnage.inventaire.defensif?.bonusStats"
+
+        ></app-stats>
+    <button 
+      name="levelUp" 
+      (click)="onLevelUpClick()" 
+      [disabled]="personnage.niveau >= personnage.job.niveauMax">
+        Niveau +
+    </button>
+</section>
