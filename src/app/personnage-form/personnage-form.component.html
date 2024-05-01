@@ -16,15 +16,19 @@
     <app-stats 
         [permanentStats]="personnage.statsActuelles"
         [permanentBoosts]="personnage.permanentBoosts"
-        [itemBonus]="personnage.inventaire.defensif?.bonusStats"
-
-        ></app-stats>
+        [itemBonus]="personnage.inventaire.defensif?.bonusStats">
+    </app-stats>
     <button 
       name="levelUp" 
       (click)="onLevelUpClick()" 
       [disabled]="personnage.niveau >= personnage.job.niveauMax">
         Niveau +
     </button>
-    <select>
-    </select>
+    <div>
+        
+        <select>
+            <option *ngFor="let job of personnage.job.jobsSuivants">{{job.displayName}}</option>
+        </select>
+    </div>
+
 </section>

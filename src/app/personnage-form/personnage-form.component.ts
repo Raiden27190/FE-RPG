@@ -1,21 +1,21 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { CommonModule, NgFor } from '@angular/common';
+import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Personnage } from '../data/personnage/personnage';
-import { Job } from '../data/personnage/jobs/job';
 import { StatsComponent } from './stats/stats.component';
 import { PointsVieComponent } from './stats/points-vie/points-vie.component';
-import { NgFor } from '@angular/common';
+import { JobService } from '../data/personnage/jobs/job.service';
 
 @Component({
   selector: 'app-personnage-form',
   standalone: true,
-  imports: [FormsModule, CommonModule, StatsComponent, PointsVieComponent],
+  imports: [CommonModule, StatsComponent, PointsVieComponent],
   templateUrl: './personnage-form.component.html',
   styleUrl: './personnage-form.component.scss'
 })
 export class PersonnageFormComponent implements OnInit {
   ngOnInit(): void {
+
     this.personnage.permanentBoosts.magie = 3;
     this.personnage.permanentBoosts.pointsVie = 10;
     this.personnage.pVActuels = this.personnage.job.baseStats.pointsVie + this.personnage.permanentBoosts.pointsVie;
@@ -36,9 +36,14 @@ export class PersonnageFormComponent implements OnInit {
       }
     }
   }
-  personnage:Personnage = new Personnage("Iriel", 37, 158, "F", Job.soeur)
+  constructor(private jobService:JobService){
+    this.jobService.Init();
+    this.personnage = new Personnage("Iriel", 37,162,"F", this.jobService.DonnerJob("soeur"));
+  }
 
-  xpRestante = this.personnage.maxExperience-this.personnage.experience;
+
+
+  personnage:Personnage;
 
   @ViewChild('form') form!: NgForm;
 
