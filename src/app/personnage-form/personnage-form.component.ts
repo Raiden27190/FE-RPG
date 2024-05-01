@@ -5,11 +5,12 @@ import { Personnage } from '../data/personnage/personnage';
 import { StatsComponent } from './stats/stats.component';
 import { PointsVieComponent } from './stats/points-vie/points-vie.component';
 import { JobService } from '../data/personnage/jobs/job.service';
+import { Job } from '../data/personnage/jobs/job';
 
 @Component({
   selector: 'app-personnage-form',
   standalone: true,
-  imports: [CommonModule, StatsComponent, PointsVieComponent],
+  imports: [FormsModule, CommonModule, StatsComponent, PointsVieComponent],
   templateUrl: './personnage-form.component.html',
   styleUrl: './personnage-form.component.scss'
 })
@@ -41,7 +42,15 @@ export class PersonnageFormComponent implements OnInit {
     this.personnage = new Personnage("Iriel", 37,162,"F", this.jobService.DonnerJob("soeur"));
   }
 
+  _nextJob:Job|undefined;
 
+  get nextJob(){
+    return this._nextJob!;
+  }
+  set nextJob(value:Job)
+  {
+    this._nextJob = value;
+  }
 
   personnage:Personnage;
 
@@ -49,6 +58,15 @@ export class PersonnageFormComponent implements OnInit {
 
   onLevelUpClick(){
     this.personnage.LevelUp();
+  }
+
+  onNextJobSelectionChanged(value:Job)
+  {
+    this.nextJob = value;
+  }
+
+  onChangeJobCLick(){
+    this.personnage.UpgradeJob(this._nextJob!)
   }
   
 }
