@@ -164,7 +164,7 @@ export class JobService {
       niveauMax: 40
     }
 
-    private mageLumiere: Job =
+  private mageLumiere: Job =
     {
       rang: 1,
       name: "mageLumiere",
@@ -173,7 +173,7 @@ export class JobService {
         pointsVie: 0,
         mouvement: 0,
         force: 0,
-        magie: 0,
+        magie: 5,
         technique: 0,
         vitesse: 0,
         chance: 0,
