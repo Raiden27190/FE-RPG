@@ -18,6 +18,7 @@ export class PersonnageFormComponent implements OnInit {
   ngOnInit(): void {
     this.personnage.permanentBoosts.magie = 3;
     this.personnage.permanentBoosts.pointsVie = 10;
+    this.personnage.pVActuels = this.personnage.job.baseStats.pointsVie + this.personnage.permanentBoosts.pointsVie;
     this.personnage.inventaire.defensif = {
       nom:"Anneau Fer",
       effet:"Protège de la magie",

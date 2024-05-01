@@ -37,7 +37,7 @@ constructor(nom: string, age:number, taille:number, sexe:string, job:Job) {
         charisme:0};
     this.job = job;
     this.statsActuelles = job.baseStats;
-    this.pVActuels = job.baseStats.pointsVie;
+    this.pVActuels = job.baseStats.pointsVie + this.permanentBoosts.pointsVie  ;
     this.inventaire={
         divers:[],
         arme: undefined,

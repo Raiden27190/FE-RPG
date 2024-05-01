@@ -9,7 +9,7 @@
     </ul>
     <p>Stats :</p>
     <app-points-vie 
-        [pvActuels]="personnage.pVActuels" 
+        [(pvActuels)]="personnage.pVActuels" 
         [pvMaxStat]="personnage.statsActuelles.pointsVie" 
         [pvMaxBonus]="personnage.permanentBoosts.pointsVie">
     </app-points-vie>
@@ -25,4 +25,6 @@
       [disabled]="personnage.niveau >= personnage.job.niveauMax">
         Niveau +
     </button>
+    <select>
+    </select>
 </section>
