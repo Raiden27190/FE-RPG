@@ -1,4 +1,4 @@
-import { Inventaire } from "./inventory";
+import { Inventaire } from "./inventaire";
 import { Job } from "./jobs/job";
 import { Stats } from "./stats";
 

@@ -1,4 +1,14 @@
 .container{
+    width: 1920px;
+    display: flex;
+    flex-basis: 35%;
+    margin: 2px;
+    border: 1px;
+    border-style: solid;
+}
+.stats-container{
+    max-width: 500px;
+    min-width: 400px;
     margin: 2px;
 }
 

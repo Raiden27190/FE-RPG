@@ -6,11 +6,12 @@ import { StatsComponent } from './stats/stats.component';
 import { PointsVieComponent } from './stats/points-vie/points-vie.component';
 import { JobService } from '../data/personnage/jobs/job.service';
 import { Job } from '../data/personnage/jobs/job';
+import { InventaireComponent } from './inventaire/inventaire.component';
 
 @Component({
   selector: 'app-personnage-form',
   standalone: true,
-  imports: [FormsModule, CommonModule, StatsComponent, PointsVieComponent],
+  imports: [FormsModule, CommonModule, StatsComponent, PointsVieComponent, InventaireComponent],
   templateUrl: './personnage-form.component.html',
   styleUrl: './personnage-form.component.scss'
 })

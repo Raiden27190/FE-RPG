@@ -3,7 +3,7 @@ import { Defensif } from "../objets/defensive";
 import { Objet } from "../objets/objet";
 
 export interface Inventaire{
-    divers: Objet[];
+    divers?: Objet[];
     arme?: Arme;
     defensif?: Defensif;
 }
