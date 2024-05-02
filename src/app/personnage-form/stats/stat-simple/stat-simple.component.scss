@@ -1,14 +1,37 @@
-.flex-parent-element {
-    display: flex;
-  }
-  
-  .flex-child-element {
-    flex: 1;
+.stat-grid-parent-element {
+  display: grid;
+  max-width: 490px;
+  grid-template-areas: 
+    "a b c d";
+    grid-template-columns: 50% 25% 12.5% 12.5%;
+}
+
+  .margin{
     margin: 2px;
   }
+
+  .stat-grid-name {
+    grid-area: "a";
+    justify-content: left;
+    align-content: center;
+  }
   
-  .flex-child-element:first-child {
-    margin-right: 20px;
+  .stat-grid-main {
+    grid-area: "b";
+    justify-self: center;
+    align-content: center;
+  }
+
+  .stat-grid-bonus {
+    grid-area: "c";
+    justify-self: center;
+    align-content: center;
+  }
+
+  .stat-grid-item {
+    grid-area: "d";
+    justify-self: center;
+    align-content: center;
   }
 
   .bottom-border{

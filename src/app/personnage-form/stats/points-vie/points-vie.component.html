@@ -1,6 +1,8 @@
 <div class="hp-grid-parent-element hp-border">
     <div class="hp-grid-label">PV :</div>
-    <div class="hp-grid-current hp-current">{{pvActuels}}</div>
+    <div class="hp-grid-current hp-current">
+        <input #pv class="input-hp-current hp-current" type="number" [(ngModel)]="_pvActuels" [max]="pvMaxTotal" [min]="0">
+    </div>
     <div class="hp-grid-separator hp-current">/</div>
     <div class="hp-grid-total-max hp-current">{{pvMaxTotal.toString()}}</div>
     <div class="hp-grid-stat-max hp-stat">{{pvMaxStat.toString()}}</div>

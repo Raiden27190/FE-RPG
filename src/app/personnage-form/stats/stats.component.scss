@@ -1,8 +1,15 @@
-.stat-flex-parent-element {
-    display: flex;
-    max-width: 480px;
+.stat-grid-parent-element {
+    display: grid;
+    max-width: 490px;
+    grid-template: "a b";
+    grid-template-columns: 1fr 1fr;
   }
-.stat-flex-child-element {
-    flex: 1;
-    margin: 2px;
-  }
+
+.stat-grid-left{
+  grid-area: "a";
+  margin: 2px;
+}
+.stat-grid-right{
+  grid-area: "b";
+  margin: 2px;
+}

@@ -69,4 +69,8 @@ export class PersonnageFormComponent implements OnInit {
     this.personnage.UpgradeJob(this._nextJob!)
   }
   
+  onPvActuelsChanged(newValue:number){
+    this.personnage.pVActuels = newValue
+  }
+
 }

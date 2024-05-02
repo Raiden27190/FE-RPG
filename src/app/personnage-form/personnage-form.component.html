@@ -5,10 +5,17 @@
         <li>Age : {{personnage.age}} ans</li>
         <li>Taille : {{personnage.taille}} cm</li>
         <li>Classe : {{personnage.job.displayName}}</li>
-        <li>Niveau : {{personnage.niveau}}</li>
+        <li>Niveau : {{personnage.niveau}}
+            <button 
+              class="margin-left"
+              name="levelUp" 
+              (click)="onLevelUpClick()" 
+              [disabled]="personnage.niveau >= personnage.job.niveauMax">
+                Niveau +
+            </button></li>
     </ul>
     <p>Stats :</p>
-    <app-points-vie 
+    <app-points-vie
         [(pvActuels)]="personnage.pVActuels" 
         [pvMaxStat]="personnage.statsActuelles.pointsVie" 
         [pvMaxBonus]="personnage.permanentBoosts.pointsVie">
@@ -18,21 +25,15 @@
         [permanentBoosts]="personnage.permanentBoosts"
         [itemBonus]="personnage.inventaire.defensif?.bonusStats">
     </app-stats>
-    <button 
-      name="levelUp" 
-      (click)="onLevelUpClick()" 
-      [disabled]="personnage.niveau >= personnage.job.niveauMax">
-        Niveau +
-    </button>
-    <section class="container">
+    <div *ngIf="personnage.job.jobsSuivants.length >0">
         <select [(ngModel)]="nextJob">
             <option *ngFor="let job of personnage.job.jobsSuivants" [ngValue]="job">{{job.displayName}}</option>
         </select>
-    </section>
-    <button name="changeJob"
-        (click)="onChangeJobCLick()"
-        [disabled]="personnage.niveau<personnage.job.niveauMax || !nextJob || !personnage.job.jobsSuivants.length">
-        Changer Job
-
-    </button>
+        <button
+          name="changeJob"
+          (click)="onChangeJobCLick()"
+          [disabled]="personnage.niveau<personnage.job.niveauMax || !nextJob || !personnage.job.jobsSuivants.length">
+            Changer Job
+        </button>
+    </div>
 </section>

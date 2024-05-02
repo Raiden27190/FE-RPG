@@ -17,5 +17,14 @@ export class PointsVieComponent {
     return this.pvMaxStat + this.pvMaxBonus
   }
 
+  get _pvActuels():number{
+    return this.pvActuels;
+  }
+  set _pvActuels(value:number){
+    this.pvActuels=value;
+    this.pvActuelsChange.emit(value);
+  }
+
   @Output() pvActuelsChange = new EventEmitter<number>();
+
 }
