@@ -1,22 +1,23 @@
 .hp-grid-parent-element {
     display: grid;
-    max-width: 480px;
+    max-width: 490px;
     grid-template-areas: 
-      "a b b b c d d d"
-      "a b b b c e f g" ;
-      grid-template-rows: 40px 20px;
+      "a b b c d d d"
+      "a b b c e f g" ;
+      grid-template-rows: 3/4em 1/4em;
+      grid-template-columns: 10% 20% 15% 10% 15% 15% 15%;
   }
 
   .hp-grid-label{
     grid-area: a;
-    justify-self: left;
+    justify-self: stretch;
     align-content: center;
     padding-left: 2px;
   }
 
   .hp-grid-current{
     grid-area: b;
-    justify-self: center;
+    justify-self: stretch;
     align-content: center;
   }
 
@@ -52,12 +53,17 @@
   }
 
   .hp-current{
-    font-size: 25px;
+    font-size: 2rem;
     font-weight: bold;
+  }
+  .input-hp-current{
+    width: 100%;
+    text-align: center;
+    justify-self: left;
   }
 
   .hp-stat{
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 
   .hp-bonus{

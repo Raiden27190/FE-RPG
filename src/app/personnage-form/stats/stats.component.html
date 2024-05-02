@@ -1,19 +1,31 @@
 <div>
-    <div class="stat-flex-parent-element">
-        <app-stat-simple class="stat-flex-child-element" statName="Force" [mainStat]="permanentStats?.force" [permanentBonus]="permanentBoosts?.force" [itemStatBonus]="itemBonus?.force"></app-stat-simple>
-        <app-stat-simple class="stat-flex-child-element" statName="Chance" [mainStat]="permanentStats?.chance" [permanentBonus]="permanentBoosts?.chance" [itemStatBonus]="itemBonus?.chance"></app-stat-simple>
+    <div class="stat-grid-parent-element">
+        <app-stat-simple class="stat-grid-left" statName="Mouvement" [mainStat]="permanentStats?.mouvement"
+            [permanentBonus]="permanentBoosts?.mouvement" [itemStatBonus]="itemBonus?.mouvement"></app-stat-simple>
     </div>
-    <div class="stat-flex-parent-element">
-        <app-stat-simple class="stat-flex-child-element" statName="Magie" [mainStat]="permanentStats?.magie" [permanentBonus]="permanentBoosts?.magie" [itemStatBonus]="itemBonus?.magie"></app-stat-simple>
-        <app-stat-simple class="stat-flex-child-element" statName="Défense" [mainStat]="permanentStats?.defense" [permanentBonus]="permanentBoosts?.defense" [itemStatBonus]="itemBonus?.defense"></app-stat-simple>
+    <div class="stat-grid-parent-element">
+        <app-stat-simple class="stat-grid-left" statName="Force" [mainStat]="permanentStats?.force"
+            [permanentBonus]="permanentBoosts?.force" [itemStatBonus]="itemBonus?.force"></app-stat-simple>
+        <app-stat-simple class="stat-grid-right" statName="Chance" [mainStat]="permanentStats?.chance"
+            [permanentBonus]="permanentBoosts?.chance" [itemStatBonus]="itemBonus?.chance"></app-stat-simple>
     </div>
-    <div class="stat-flex-parent-element">
-        <app-stat-simple class="stat-flex-child-element" statName="Technique" [mainStat]="permanentStats?.technique" [permanentBonus]="permanentBoosts?.technique" [itemStatBonus]="itemBonus?.technique"></app-stat-simple>
-        <app-stat-simple class="stat-flex-child-element" statName="Résistance" [mainStat]="permanentStats?.resistance" [permanentBonus]="permanentBoosts?.resistance" [itemStatBonus]="itemBonus?.resistance"></app-stat-simple>
+    <div class="stat-grid-parent-element">
+        <app-stat-simple class="stat-grid-left" statName="Magie" [mainStat]="permanentStats?.magie" [permanentBonus]="permanentBoosts?.magie"
+            [itemStatBonus]="itemBonus?.magie"></app-stat-simple>
+        <app-stat-simple class="stat-grid-right" statName="Défense" [mainStat]="permanentStats?.defense"
+            [permanentBonus]="permanentBoosts?.defense" [itemStatBonus]="itemBonus?.defense"></app-stat-simple>
     </div>
-    <div class="stat-flex-parent-element">
-        <app-stat-simple class="stat-flex-child-element" statName="Vitesse" [mainStat]="permanentStats?.vitesse" [permanentBonus]="permanentBoosts?.vitesse" [itemStatBonus]="itemBonus?.vitesse"></app-stat-simple>
-        <app-stat-simple class="stat-flex-child-element" statName="Charisme" [mainStat]="permanentStats?.charisme" [permanentBonus]="permanentBoosts?.charisme" [itemStatBonus]="itemBonus?.charisme"></app-stat-simple>
+    <div class="stat-grid-parent-element">
+        <app-stat-simple class="stat-grid-left" statName="Technique" [mainStat]="permanentStats?.technique"
+            [permanentBonus]="permanentBoosts?.technique" [itemStatBonus]="itemBonus?.technique"></app-stat-simple>
+        <app-stat-simple class="stat-grid-right" statName="Résistance" [mainStat]="permanentStats?.resistance"
+            [permanentBonus]="permanentBoosts?.resistance" [itemStatBonus]="itemBonus?.resistance"></app-stat-simple>
     </div>
-    
+    <div class="stat-grid-parent-element">
+        <app-stat-simple class="stat-grid-left" statName="Vitesse" [mainStat]="permanentStats?.vitesse"
+            [permanentBonus]="permanentBoosts?.vitesse" [itemStatBonus]="itemBonus?.vitesse"></app-stat-simple>
+        <app-stat-simple class="stat-grid-right" statName="Charisme" [mainStat]="permanentStats?.charisme"
+            [permanentBonus]="permanentBoosts?.charisme" [itemStatBonus]="itemBonus?.charisme"></app-stat-simple>
+    </div>
+
 </div>
