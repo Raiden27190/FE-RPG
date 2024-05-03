@@ -10,7 +10,7 @@ import { ObjetComponent } from './objet/objet.component';
   styleUrl: './inventaire.component.scss'
 })
 export class InventaireComponent {
-  @Input() inventaire:Inventaire = {};
+  @Input() inventaire:Inventaire = {divers:[]};
 
   @Output() inventaireChange:EventEmitter<Inventaire> = new EventEmitter<Inventaire>();
 }

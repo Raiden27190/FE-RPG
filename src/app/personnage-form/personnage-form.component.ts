@@ -7,6 +7,9 @@ import { PointsVieComponent } from './stats/points-vie/points-vie.component';
 import { JobService } from '../data/personnage/jobs/job.service';
 import { Job } from '../data/personnage/jobs/job';
 import { InventaireComponent } from './inventaire/inventaire.component';
+import { TypeObjet } from '../data/objets/typeObjet';
+import { Puissance } from '../data/objets/degats/puissance';
+import { TypeDegats } from '../data/objets/degats/typeDegats';
 
 @Component({
   selector: 'app-personnage-form',
@@ -21,8 +24,32 @@ export class PersonnageFormComponent implements OnInit {
     this.personnage.permanentBoosts.magie = 3;
     this.personnage.permanentBoosts.pointsVie = 10;
     this.personnage.pVActuels = this.personnage.job.baseStats.pointsVie + this.personnage.permanentBoosts.pointsVie;
+    this.personnage.inventaire.arme = {
+      nom: "Récup",
+      effet: "Soigne",
+      typeObjet: TypeObjet.soin,
+      degatsPrincipaux:{
+        typeDegats:TypeDegats.soin,
+        de:10,
+        portee: {
+          portee:0,
+          zoneDEffet:1
+        },
+        puissance: Puissance.magique
+      },
+      degatsSecondaires:{
+        typeDegats:TypeDegats.soin,
+        de:10,
+        portee: {
+          portee:1,
+          zoneDEffet:0
+        },
+        puissance: Puissance.magique
+      }
+    }
     this.personnage.inventaire.defensif = {
       nom:"Anneau Fer",
+      typeObjet:TypeObjet.anneau,
       effet:"Protège de la magie",
       bonusStats: {
           pointsVie:0,

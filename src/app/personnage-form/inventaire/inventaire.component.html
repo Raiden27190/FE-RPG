@@ -1,13 +1,13 @@
 <section class="inventory-container">
  <h3>Equipement :</h3>
  <app-objet [(objet)]="inventaire.arme" ></app-objet>
- <app-objet></app-objet>
+ <app-objet [(objet)]="inventaire.defensif" ></app-objet>
  <h3>Objets :</h3>
- <app-objet></app-objet>
- <app-objet></app-objet>
- <app-objet></app-objet>
- <app-objet></app-objet>
- <app-objet></app-objet>
- <app-objet></app-objet>
- <app-objet></app-objet>
+ <app-objet [(objet)]="inventaire.divers[0]"></app-objet>
+ <app-objet [(objet)]="inventaire.divers[1]"></app-objet>
+ <app-objet [(objet)]="inventaire.divers[2]"></app-objet>
+ <app-objet [(objet)]="inventaire.divers[3]"></app-objet>
+ <app-objet [(objet)]="inventaire.divers[4]"></app-objet>
+ <app-objet [(objet)]="inventaire.divers[5]"></app-objet>
+ <app-objet [(objet)]="inventaire.divers[6]"></app-objet>
 </section>

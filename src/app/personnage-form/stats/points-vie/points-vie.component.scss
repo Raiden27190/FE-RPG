@@ -4,7 +4,7 @@
     grid-template-areas: 
       "a b b c d d d"
       "a b b c e f g" ;
-      grid-template-rows: 3/4em 1/4em;
+      grid-template-rows: 3fr 1fr;
       grid-template-columns: 10% 20% 15% 10% 15% 15% 15%;
   }
 

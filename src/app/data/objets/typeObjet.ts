@@ -1,4 +1,4 @@
-export enum TypeDegats{
+export enum TypeObjet{
     epee='epee',
     hache='hache',
     lance='lance',
@@ -9,5 +9,8 @@ export enum TypeDegats{
     tenebres='tenebres',
     feu='feu',
     vent='vent',
-    electricite='electricite'
+    electricite='electricite',
+    anneau='anneau',
+    bouclier='bouclier',
+    consommable='consommable'
 }
