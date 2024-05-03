@@ -1,4 +1,17 @@
-<section class="object-container">
-    
+<section class="objet-container">
+    <img class="objet-type objet-type-icon" *ngIf="objet" [src]="assetTypeSrc(objet.typeObjet)" />
 
+    <body class="objet-nom">{{objet?.nom}}</body>
+    <section *ngIf="isArme()" class="arme-degats">
+        <img class="arme-degats-principal objet-type-icon"
+            [src]="assetTypeSrc(arme.degatsPrincipaux.typeDegats)" /> 
+            <div class="arme-degats-principal-texte">
+                1d{{arme.degatsPrincipaux.de}}
+            </div>
+        <img class="arme-degats-secondaire objet-type-icon" 
+            [src]="assetTypeSrc(arme.degatsSecondaires?.typeDegats)" /> 
+            <div class="arme-degats-secondaire-texte">
+                1d{{arme.degatsSecondaires?.de}}
+            </div>
+    </section>
 </section>
