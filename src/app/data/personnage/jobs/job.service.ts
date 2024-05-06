@@ -41,14 +41,28 @@ export class JobService {
 
     // Laguz
     this.InitLaguz();
+
+    // Barde
+    this.listeJobs.push(this.barde);
+    this.listeJobs.filter(job => job.rang === 1).forEach(jobRangUn => 
+      this.barde.jobsSuivants.push(jobRangUn)
+    );
+
+    // Base
+    this.listeJobs.push(this.base);
+    this.listeJobs.filter(job => job.rang === 0).forEach(jobRangZero =>
+      this.base.jobsSuivants.push(jobRangZero)
+    );
   }
+
+  //#region Initialisations
 
   private InitLaguz() {
     this.listeJobs.push(
       this.chat, this.tigre, this.lion,
       this.corbeau, this.faucon, this.heron,
       this.dragonRouge, this.dragonNoir, this.dragonBlanc,
-      this.loup, this.ulfhedin, this.kitsune, this.targuel
+      this.loup, this.ulfhedin, this.kitsune, this.taguel
     );
   }
 
@@ -211,6 +225,8 @@ export class JobService {
     );
   }
 
+  //#endregion
+
   public DonnerJob(name: string): Job {
     let foundjob = this.listeJobs.find(job => job.name === name);
     if (!foundjob)
@@ -277,40 +293,40 @@ export class JobService {
     name: "soeur",
     displayName: "Frère / Sœur",
     baseStats: {
-      pointsVie: 15,
+      pointsVie: 18,
       mouvement: 4,
-      force: 5,
-      magie: 15,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 10,
-      resistance: 12,
+      force: 0,
+      magie: 1,
+      technique: 2,
+      vitesse: 2,
+      chance: 0,
+      defense: 1,
+      resistance: 6,
       charisme: 10
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 10,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 20,
+      magie: 27,
+      technique: 23,
+      vitesse: 25,
+      chance: 32,
+      defense: 21,
+      resistance: 28,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 30,
-      force: 10,
-      magie: 95,
-      technique: 20,
-      vitesse: 20,
-      chance: 30,
-      defense: 40,
-      resistance: 60,
-      charisme: 60
+      pointsVie: 50,
+      mouvement: 0,
+      force: 35,
+      magie: 65,
+      technique: 25,
+      vitesse: 40,
+      chance: 60,
+      defense: 15,
+      resistance: 55,
+      charisme: 50
     },
     jobsSuivants: [],
     montee: false,
@@ -323,40 +339,40 @@ export class JobService {
     name: "mageLumiere",
     displayName: "Mage Lumière",
     baseStats: {
-      pointsVie: 15,
+      pointsVie: 18,
       mouvement: 4,
-      force: 5,
-      magie: 15,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 10,
-      resistance: 12,
-      charisme: 10
+      force: 0,
+      magie: 1,
+      technique: 1,
+      vitesse: 2,
+      chance: 0,
+      defense: 1,
+      resistance: 5,
+      charisme: 0
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 10,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 23,
+      magie: 27,
+      technique: 26,
+      vitesse: 26,
+      chance: 30,
+      defense: 23,
+      resistance: 29,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 30,
-      force: 10,
-      magie: 95,
-      technique: 20,
-      vitesse: 20,
-      chance: 30,
-      defense: 40,
-      resistance: 60,
-      charisme: 60
+      pointsVie: 55,
+      mouvement: 0,
+      force: 30,
+      magie: 65,
+      technique: 50,
+      vitesse: 40,
+      chance: 25,
+      defense: 15,
+      resistance: 55,
+      charisme: 50
     },
     jobsSuivants: [],
     montee: false,
@@ -367,10 +383,10 @@ export class JobService {
   private pretresse: Job = {
     rang: 1,
     name: "pretresse",
-    displayName: "Prêtre / Prêtresse",
+    displayName: "Evêque / Prêtresse",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -394,7 +410,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 10,
       magie: 100,
       technique: 25,
@@ -413,10 +429,10 @@ export class JobService {
   private clerc: Job = {
     rang: 1,
     name: "clerc",
-    displayName: "Clerc",
+    displayName: "Clerc / Cléresse",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -440,7 +456,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 10,
       magie: 100,
       technique: 25,
@@ -462,7 +478,7 @@ export class JobService {
     displayName: "Saint(e)",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -486,7 +502,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 15,
       magie: 100,
       technique: 30,
@@ -508,7 +524,7 @@ export class JobService {
     displayName: "Moine / Sœur Guerrier(e)",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -532,7 +548,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 40,
       magie: 85,
       technique: 30,
@@ -554,7 +570,7 @@ export class JobService {
     displayName: "Apôtre",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 5,
       technique: 0,
@@ -578,7 +594,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 25,
       magie: 100,
       technique: 40,
@@ -600,7 +616,7 @@ export class JobService {
     displayName: "Invocateur",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 5,
       technique: 0,
@@ -624,7 +640,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 40,
       magie: 85,
       technique: 40,
@@ -647,36 +663,36 @@ export class JobService {
     baseStats: {
       pointsVie: 15,
       mouvement: 6,
-      force: 5,
-      magie: 15,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 10,
-      resistance: 10,
+      force: 0,
+      magie: 1,
+      technique: 1,
+      vitesse: 3,
+      chance: 0,
+      defense: 2,
+      resistance: 5,
       charisme: 10
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 12,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 17,
+      magie: 28,
+      technique: 25,
+      vitesse: 26,
+      chance: 33,
+      defense: 17,
+      resistance: 30,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 50,
-      force: 10,
-      magie: 85,
-      technique: 20,
-      vitesse: 50,
-      chance: 20,
-      defense: 40,
+      pointsVie: 45,
+      mouvement: 0,
+      force: 25,
+      magie: 60,
+      technique: 45,
+      vitesse: 45,
+      chance: 65,
+      defense: 15,
       resistance: 50,
       charisme: 50
     },
@@ -692,7 +708,7 @@ export class JobService {
     displayName: "Cavalier-Mage",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -716,7 +732,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 55,
+      mouvement: 0,
       force: 15,
       magie: 90,
       technique: 25,
@@ -738,7 +754,7 @@ export class JobService {
     displayName: "Sage Qilin",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -762,7 +778,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 60,
+      mouvement: 0,
       force: 20,
       magie: 95,
       technique: 30,
@@ -784,7 +800,7 @@ export class JobService {
     displayName: "Valkyrie",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -808,7 +824,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 60,
+      mouvement: 0,
       force: 25,
       magie: 100,
       technique: 40,
@@ -832,40 +848,40 @@ export class JobService {
     displayName: "Soldat",
     name: "soldat",
     baseStats: {
-      pointsVie: 15,
+      pointsVie: 20,
       mouvement: 4,
-      force: 15,
-      magie: 5,
-      technique: 5,
-      vitesse: 5,
+      force: 3,
+      magie: 0,
+      technique: 0,
+      vitesse: 1,
       chance: 0,
-      defense: 13,
-      resistance: 9,
-      charisme: 3
+      defense: 0,
+      resistance: 0,
+      charisme: 0
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 10,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 31,
+      magie: 19,
+      technique: 19,
+      vitesse: 19,
+      chance: 33,
+      defense: 21,
+      resistance: 19,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 30,
-      force: 85,
-      magie: 15,
-      technique: 30,
-      vitesse: 40,
-      chance: 20,
-      defense: 60,
-      resistance: 40,
-      charisme: 30
+      pointsVie: 80,
+      mouvement: 0,
+      force: 60,
+      magie: 35,
+      technique: 35,
+      vitesse: 30,
+      chance: 30,
+      defense: 55,
+      resistance: 20,
+      charisme: 50
     },
     montee: false,
     volante: false,
@@ -879,7 +895,7 @@ export class JobService {
     name: "chevalierLance",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -903,7 +919,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 90,
       magie: 20,
       technique: 35,
@@ -925,7 +941,7 @@ export class JobService {
     name: "generalLance",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -949,7 +965,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 95,
       magie: 20,
       technique: 45,
@@ -971,7 +987,7 @@ export class JobService {
     name: "marechal",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 0,
       technique: 0,
@@ -995,7 +1011,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 100,
       magie: 30,
       technique: 50,
@@ -1017,7 +1033,7 @@ export class JobService {
     name: "hallebardier",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -1041,7 +1057,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 35,
+      mouvement: 0,
       force: 90,
       magie: 25,
       technique: 45,
@@ -1063,7 +1079,7 @@ export class JobService {
     name: "maitreLancier",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 0,
       technique: 0,
@@ -1087,7 +1103,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 35,
+      mouvement: 0,
       force: 95,
       magie: 45,
       technique: 50,
@@ -1110,7 +1126,7 @@ export class JobService {
     name: "Basara",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 0,
       technique: 0,
@@ -1134,7 +1150,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 35,
+      mouvement: 0,
       force: 95,
       magie: 45,
       technique: 50,
@@ -1159,40 +1175,40 @@ export class JobService {
     displayName: "Combattant",
     name: "combattant",
     baseStats: {
-      pointsVie: 15,
+      pointsVie: 20,
       mouvement: 4,
-      force: 15,
-      magie: 5,
-      technique: 5,
-      vitesse: 5,
+      force: 5,
+      magie: 0,
+      technique: 2,
+      vitesse: 4,
       chance: 0,
-      defense: 13,
-      resistance: 9,
-      charisme: 3
+      defense: 2,
+      resistance: 0,
+      charisme: 0
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 10,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 32,
+      magie: 18,
+      technique: 27,
+      vitesse: 26,
+      chance: 29,
+      defense: 25,
+      resistance: 21,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 30,
-      force: 85,
-      magie: 15,
-      technique: 30,
-      vitesse: 40,
-      chance: 20,
-      defense: 60,
-      resistance: 40,
-      charisme: 30
+      pointsVie: 80,
+      mouvement: 0,
+      force: 65,
+      magie: 30,
+      technique: 40,
+      vitesse: 20,
+      chance: 40,
+      defense: 25,
+      resistance: 20,
+      charisme: 50
     },
     montee: false,
     volante: false,
@@ -1206,7 +1222,7 @@ export class JobService {
     name: "chevalierHache",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -1230,7 +1246,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 90,
       magie: 20,
       technique: 35,
@@ -1252,7 +1268,7 @@ export class JobService {
     name: "generalHache",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -1276,7 +1292,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 95,
       magie: 20,
       technique: 45,
@@ -1298,7 +1314,7 @@ export class JobService {
     name: "guerrier",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 0,
       technique: 0,
@@ -1322,7 +1338,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 35,
+      mouvement: 0,
       force: 90,
       magie: 25,
       technique: 45,
@@ -1343,7 +1359,7 @@ export class JobService {
     name: "maitreHache",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -1367,7 +1383,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 35,
+      mouvement: 0,
       force: 95,
       magie: 45,
       technique: 50,
@@ -1390,7 +1406,7 @@ export class JobService {
     name: "berserker",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 0,
       technique: 0,
@@ -1414,7 +1430,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 35,
+      mouvement: 0,
       force: 95,
       magie: 45,
       technique: 50,
@@ -1435,47 +1451,47 @@ export class JobService {
   //#region Voleur
 
   private voleur: Job = {
+    rang: 0,
     displayName: "Voleur",
     name: "voleur",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 10,
-      magie: 5,
-      technique: 10,
-      vitesse: 15,
+      pointsVie: 16,
+      mouvement: 4,
+      force: 3,
+      magie: 0,
+      technique: 1,
+      vitesse: 9,
       chance: 0,
-      defense: 8,
-      resistance: 8,
-      charisme: 5
+      defense: 2,
+      resistance: 0,
+      charisme: 0
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 10,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 23,
+      magie: 19,
+      technique: 32,
+      vitesse: 30,
+      chance: 28,
+      defense: 20,
+      resistance: 20,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 30,
-      force: 85,
-      magie: 15,
-      technique: 30,
-      vitesse: 40,
-      chance: 20,
-      defense: 60,
-      resistance: 40,
-      charisme: 30
+      pointsVie: 75,
+      mouvement: 0,
+      force: 50,
+      magie: 25,
+      technique: 40,
+      vitesse: 65,
+      chance: 45,
+      defense: 25,
+      resistance: 20,
+      charisme: 50
     },
     montee: false,
     volante: false,
-    rang: 0,
     niveauMax: 20,
     jobsSuivants: []
   }
@@ -1486,7 +1502,7 @@ export class JobService {
     displayName: "Escroc",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 5,
@@ -1510,7 +1526,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 40,
+      mouvement: 0,
       force: 90,
       magie: 25,
       technique: 45,
@@ -1532,7 +1548,7 @@ export class JobService {
     displayName: "Baladin",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -1556,7 +1572,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 40,
+      mouvement: 0,
       force: 90,
       magie: 40,
       technique: 55,
@@ -1578,7 +1594,7 @@ export class JobService {
     displayName: "Espion",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -1602,7 +1618,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 40,
+      mouvement: 0,
       force: 95,
       magie: 40,
       technique: 65,
@@ -1624,7 +1640,7 @@ export class JobService {
     displayName: "Ninja",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -1648,7 +1664,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 40,
+      mouvement: 0,
       force: 85,
       magie: 35,
       technique: 30,
@@ -1670,7 +1686,7 @@ export class JobService {
     displayName: "Maître Ninja",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 5,
       technique: 0,
@@ -1694,7 +1710,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 40,
+      mouvement: 0,
       force: 90,
       magie: 55,
       technique: 55,
@@ -1716,7 +1732,7 @@ export class JobService {
     displayName: "Assassin",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 0,
       technique: 0,
@@ -1740,7 +1756,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 40,
+      mouvement: 0,
       force: 95,
       magie: 60,
       technique: 60,
@@ -1764,40 +1780,40 @@ export class JobService {
     name: "cavalierPegase",
     displayName: "Cavalier(e) Pégase",
     baseStats: {
-      pointsVie: 15,
+      pointsVie: 14,
       mouvement: 6,
-      force: 12,
-      magie: 5,
-      technique: 10,
-      vitesse: 15,
-      chance: 5,
-      defense: 10,
-      resistance: 10,
-      charisme: 5
+      force: 4,
+      magie: 0,
+      technique: 5,
+      vitesse: 5,
+      chance: 0,
+      defense: 3,
+      resistance: 2,
+      charisme: 3
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 12,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 25,
+      magie: 23,
+      technique: 30,
+      vitesse: 30,
+      chance: 30,
+      defense: 22,
+      resistance: 26,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 45,
+      pointsVie: 70,
+      mouvement: 0,
       force: 60,
-      magie: 40,
-      technique: 20,
-      vitesse: 35,
-      chance: 20,
-      defense: 40,
-      resistance: 40,
-      charisme: 20
+      magie: 30,
+      technique: 55,
+      vitesse: 60,
+      chance: 50,
+      defense: 30,
+      resistance: 30,
+      charisme: 50
     },
     jobsSuivants: [],
     montee: true,
@@ -1811,7 +1827,7 @@ export class JobService {
     displayName: "Pégase Noir",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -1835,7 +1851,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 65,
       magie: 55,
       technique: 25,
@@ -1857,7 +1873,7 @@ export class JobService {
     displayName: "Chevalier Faucon",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -1881,7 +1897,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 70,
       magie: 60,
       technique: 25,
@@ -1903,7 +1919,7 @@ export class JobService {
     displayName: "Cavalier Sleipnir",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -1927,7 +1943,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 70,
       magie: 75,
       technique: 35,
@@ -1949,7 +1965,7 @@ export class JobService {
     displayName: "Lord Faucon",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -1973,7 +1989,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 85,
       magie: 60,
       technique: 30,
@@ -1995,7 +2011,7 @@ export class JobService {
     displayName: "Seigneur Sleipnir",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 5,
       technique: 0,
@@ -2019,7 +2035,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 75,
       magie: 85,
       technique: 40,
@@ -2041,7 +2057,7 @@ export class JobService {
     displayName: "Seigneur Faucon",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 5,
       technique: 0,
@@ -2065,7 +2081,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 50,
+      mouvement: 0,
       force: 90,
       magie: 65,
       technique: 35,
@@ -2086,40 +2102,40 @@ export class JobService {
     name: "cavalierWyverne",
     displayName: "Cavalier(e) Wyverne",
     baseStats: {
-      pointsVie: 15,
+      pointsVie: 20,
       mouvement: 6,
-      force: 12,
-      magie: 5,
-      technique: 10,
-      vitesse: 15,
-      chance: 5,
-      defense: 10,
-      resistance: 10,
-      charisme: 5
+      force: 9,
+      magie: 0,
+      technique: 5,
+      vitesse: 7,
+      chance: 0,
+      defense: 7,
+      resistance: 1,
+      charisme: 3
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 10,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 31,
+      magie: 20,
+      technique: 23,
+      vitesse: 23,
+      chance: 30,
+      defense: 30,
+      resistance: 18,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 45,
+      pointsVie: 80,
+      mouvement: 0,
       force: 60,
-      magie: 40,
-      technique: 20,
-      vitesse: 35,
-      chance: 20,
-      defense: 40,
+      magie: 30,
+      technique: 40,
+      vitesse: 45,
+      chance: 35,
+      defense: 35,
       resistance: 40,
-      charisme: 20
+      charisme: 50
     },
     jobsSuivants: [],
     montee: true,
@@ -2133,7 +2149,7 @@ export class JobService {
     displayName: "Lord Wyverne",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -2157,7 +2173,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 70,
       magie: 50,
       technique: 25,
@@ -2179,7 +2195,7 @@ export class JobService {
     displayName: "Chevalier Griffon",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -2203,7 +2219,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 80,
       magie: 40,
       technique: 25,
@@ -2225,7 +2241,7 @@ export class JobService {
     displayName: "Belliciste",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -2249,7 +2265,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 80,
       magie: 75,
       technique: 35,
@@ -2271,7 +2287,7 @@ export class JobService {
     displayName: "Lord Griffon",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -2295,7 +2311,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 90,
       magie: 45,
       technique: 30,
@@ -2317,7 +2333,7 @@ export class JobService {
     displayName: "Seigneur Belliciste",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 5,
       technique: 0,
@@ -2341,7 +2357,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 85,
       magie: 85,
       technique: 40,
@@ -2363,7 +2379,7 @@ export class JobService {
     displayName: "Seigneur Griffon",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 5,
       technique: 0,
@@ -2387,7 +2403,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 50,
+      mouvement: 0,
       force: 95,
       magie: 65,
       technique: 35,
@@ -2412,40 +2428,40 @@ export class JobService {
     name: "cavalier",
     displayName: "Cavalier",
     baseStats: {
-      pointsVie: 15,
+      pointsVie: 20,
       mouvement: 6,
-      force: 15,
-      magie: 5,
-      technique: 10,
-      vitesse: 15,
-      chance: 5,
-      defense: 10,
-      resistance: 8,
-      charisme: 10
+      force: 5,
+      magie: 0,
+      technique: 2,
+      vitesse: 5,
+      chance: 0,
+      defense: 6,
+      resistance: 0,
+      charisme: 0
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 12,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 28,
+      magie: 19,
+      technique: 27,
+      vitesse: 27,
+      chance: 30,
+      defense: 28,
+      resistance: 26,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 45,
-      force: 80,
-      magie: 10,
-      technique: 25,
+      pointsVie: 80,
+      mouvement: 0,
+      force: 60,
+      magie: 30,
+      technique: 40,
       vitesse: 50,
-      chance: 10,
-      defense: 50,
+      chance: 40,
+      defense: 40,
       resistance: 30,
-      charisme: 30
+      charisme: 50
     },
     jobsSuivants: [],
     montee: true,
@@ -2454,12 +2470,12 @@ export class JobService {
   }
 
   private grandChevalier: Job = {
-    rang: 0,
+    rang: 1,
     name: "grandChevalier",
     displayName: "Grand Chevalier",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -2483,7 +2499,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 50,
+      mouvement: 0,
       force: 85,
       magie: 15,
       technique: 30,
@@ -2505,7 +2521,7 @@ export class JobService {
     displayName: "Chevalier-Argent",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -2529,7 +2545,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 85,
       magie: 20,
       technique: 35,
@@ -2546,12 +2562,12 @@ export class JobService {
   }
 
   private chevalierOr: Job = {
-    rang: 0,
+    rang: 3,
     name: "chevalierOr",
     displayName: "Chevalier-Or",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 0,
       technique: 5,
@@ -2575,7 +2591,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 95,
       magie: 20,
       technique: 45,
@@ -2597,7 +2613,7 @@ export class JobService {
     displayName: "Paladin",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -2621,7 +2637,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 80,
       magie: 20,
       technique: 30,
@@ -2643,7 +2659,7 @@ export class JobService {
     displayName: "Chevalier Sacré",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -2667,7 +2683,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 80,
       magie: 40,
       technique: 30,
@@ -2689,7 +2705,7 @@ export class JobService {
     displayName: "Skögul",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 5,
       technique: 5,
@@ -2713,7 +2729,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 80,
       magie: 60,
       technique: 45,
@@ -2738,40 +2754,40 @@ export class JobService {
     name: "archer",
     displayName: "Archer",
     baseStats: {
-      pointsVie: 15,
+      pointsVie: 18,
       mouvement: 4,
-      force: 15,
-      magie: 5,
-      technique: 15,
-      vitesse: 12,
-      chance: 5,
-      defense: 8,
-      resistance: 8,
-      charisme: 10
+      force: 4,
+      magie: 0,
+      technique: 3,
+      vitesse: 3,
+      chance: 0,
+      defense: 3,
+      resistance: 0,
+      charisme: 0
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 10,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 26,
+      magie: 20,
+      technique: 31,
+      vitesse: 27,
+      chance: 29,
+      defense: 23,
+      resistance: 21,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 30,
-      force: 75,
-      magie: 10,
-      technique: 35,
-      vitesse: 35,
-      chance: 30,
-      defense: 40,
-      resistance: 40,
-      charisme: 20
+      pointsVie: 60,
+      mouvement: 0,
+      force: 50,
+      magie: 25,
+      technique: 50,
+      vitesse: 50,
+      chance: 45,
+      defense: 30,
+      resistance: 30,
+      charisme: 50
     },
     jobsSuivants: [],
     montee: false,
@@ -2785,7 +2801,7 @@ export class JobService {
     displayName: "Sniper",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -2809,7 +2825,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 85,
       magie: 15,
       technique: 40,
@@ -2831,7 +2847,7 @@ export class JobService {
     displayName: "Rôdeur",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -2855,7 +2871,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 35,
+      mouvement: 0,
       force: 80,
       magie: 15,
       technique: 40,
@@ -2877,7 +2893,7 @@ export class JobService {
     displayName: "Balistaire",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -2901,7 +2917,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 90,
       magie: 25,
       technique: 50,
@@ -2923,7 +2939,7 @@ export class JobService {
     displayName: "Ranger",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -2947,7 +2963,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 35,
+      mouvement: 0,
       force: 90,
       magie: 15,
       technique: 45,
@@ -2969,7 +2985,7 @@ export class JobService {
     displayName: "Machiniste",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -2993,7 +3009,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 95,
       magie: 30,
       technique: 55,
@@ -3015,7 +3031,7 @@ export class JobService {
     displayName: "Chevalier-Arc",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 0,
       technique: 0,
@@ -3039,7 +3055,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 45,
+      mouvement: 0,
       force: 100,
       magie: 15,
       technique: 50,
@@ -3061,7 +3077,7 @@ export class JobService {
     displayName: "Chevalier Kinshi",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 0,
       technique: 5,
@@ -3085,7 +3101,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 35,
+      mouvement: 0,
       force: 100,
       magie: 20,
       technique: 60,
@@ -3110,40 +3126,40 @@ export class JobService {
     name: "mageElementaire",
     displayName: "Mage Elémentaire",
     baseStats: {
-      pointsVie: 15,
+      pointsVie: 16,
       mouvement: 4,
-      force: 5,
-      magie: 15,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 8,
-      resistance: 12,
-      charisme: 10
+      force: 0,
+      magie: 1,
+      technique: 3,
+      vitesse: 2,
+      chance: 0,
+      defense: 2,
+      resistance: 4,
+      charisme: 0
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 10,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 19,
+      magie: 31,
+      technique: 28,
+      vitesse: 27,
+      chance: 31,
+      defense: 20,
+      resistance: 25,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 30,
-      force: 10,
-      magie: 85,
-      technique: 20,
-      vitesse: 20,
-      chance: 30,
-      defense: 40,
-      resistance: 60,
-      charisme: 60
+      pointsVie: 45,
+      mouvement: 0,
+      force: 25,
+      magie: 65,
+      technique: 30,
+      vitesse: 45,
+      chance: 45,
+      defense: 15,
+      resistance: 40,
+      charisme: 50
     },
     jobsSuivants: [],
     montee: false,
@@ -3156,40 +3172,40 @@ export class JobService {
     name: "mageTenebres",
     displayName: "Mage Ténèbres",
     baseStats: {
-      pointsVie: 15,
+      pointsVie: 16,
       mouvement: 4,
-      force: 5,
-      magie: 15,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 8,
-      resistance: 12,
-      charisme: 10
+      force: 0,
+      magie: 2,
+      technique: 1,
+      vitesse: 2,
+      chance: 0,
+      defense: 2,
+      resistance: 4,
+      charisme: 0
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 10,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 20,
+      magie: 30,
+      technique: 27,
+      vitesse: 26,
+      chance: 28,
+      defense: 26,
+      resistance: 27,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 30,
-      force: 10,
-      magie: 85,
-      technique: 20,
-      vitesse: 20,
-      chance: 30,
-      defense: 40,
-      resistance: 60,
-      charisme: 60
+      pointsVie: 70,
+      mouvement: 0,
+      force: 25,
+      magie: 50,
+      technique: 40,
+      vitesse: 35,
+      chance: 20,
+      defense: 45,
+      resistance: 30,
+      charisme: 50
     },
     jobsSuivants: [],
     montee: false,
@@ -3203,7 +3219,7 @@ export class JobService {
     displayName: "Sage",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -3227,7 +3243,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 10,
       magie: 90,
       technique: 20,
@@ -3249,7 +3265,7 @@ export class JobService {
     displayName: "Shaman / Sorcière",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -3273,7 +3289,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 20,
       magie: 85,
       technique: 25,
@@ -3295,7 +3311,7 @@ export class JobService {
     displayName: "Druide",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -3319,7 +3335,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 10,
       magie: 95,
       technique: 25,
@@ -3341,7 +3357,7 @@ export class JobService {
     displayName: "Gremory",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -3365,7 +3381,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 35,
       magie: 85,
       technique: 25,
@@ -3387,7 +3403,7 @@ export class JobService {
     displayName: "Archimage",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 5,
       technique: 0,
@@ -3411,7 +3427,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 10,
       magie: 100,
       technique: 30,
@@ -3433,7 +3449,7 @@ export class JobService {
     displayName: "Nécromancien",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 5,
       technique: 0,
@@ -3457,7 +3473,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 40,
       magie: 95,
       technique: 30,
@@ -3482,40 +3498,40 @@ export class JobService {
     name: "lord",
     displayName: "Lord / Lady",
     baseStats: {
-      pointsVie: 15,
+      pointsVie: 16,
       mouvement: 4,
-      force: 15,
-      magie: 5,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 12,
-      resistance: 12,
-      charisme: 15
+      force: 4,
+      magie: 0,
+      technique: 8,
+      vitesse: 9,
+      chance: 0,
+      defense: 3,
+      resistance: 1,
+      charisme: 10
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 10,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 25,
+      magie: 25,
+      technique: 25,
+      vitesse: 25,
+      chance: 30,
+      defense: 25,
+      resistance: 25,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 30,
-      force: 65,
-      magie: 35,
-      technique: 20,
-      vitesse: 20,
-      chance: 30,
-      defense: 45,
-      resistance: 45,
-      charisme: 60
+      pointsVie: 70,
+      mouvement: 0,
+      force: 55,
+      magie: 30,
+      technique: 60,
+      vitesse: 60,
+      chance: 60,
+      defense: 30,
+      resistance: 30,
+      charisme: 50
     },
     jobsSuivants: [],
     montee: false,
@@ -3529,7 +3545,7 @@ export class JobService {
     displayName: "Noble",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -3553,7 +3569,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 70,
       magie: 40,
       technique: 35,
@@ -3575,7 +3591,7 @@ export class JobService {
     displayName: "Héros / Héroïne",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -3599,7 +3615,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 75,
       magie: 45,
       technique: 30,
@@ -3621,7 +3637,7 @@ export class JobService {
     displayName: "Noble-Mage",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -3645,7 +3661,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 75,
       magie: 60,
       technique: 45,
@@ -3667,7 +3683,7 @@ export class JobService {
     displayName: "Héros-Mage",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -3691,7 +3707,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 75,
       magie: 60,
       technique: 40,
@@ -3713,7 +3729,7 @@ export class JobService {
     displayName: "Grand Lord",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 5,
@@ -3737,7 +3753,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 80,
       magie: 65,
       technique: 55,
@@ -3759,7 +3775,7 @@ export class JobService {
     displayName: "Conquérant / Régente",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -3783,7 +3799,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 80,
       magie: 65,
       technique: 45,
@@ -3808,40 +3824,40 @@ export class JobService {
     displayName: "Epéiste",
     name: "epeiste",
     baseStats: {
-      pointsVie: 15,
+      pointsVie: 18,
       mouvement: 4,
-      force: 15,
-      magie: 5,
-      technique: 5,
-      vitesse: 5,
+      force: 4,
+      magie: 0,
+      technique: 8,
+      vitesse: 8,
       chance: 0,
-      defense: 13,
-      resistance: 9,
-      charisme: 3
+      defense: 4,
+      resistance: 0,
+      charisme: 0
     },
     maxStats: {
-      pointsVie: 0,
+      pointsVie: 60,
       mouvement: 10,
-      force: 55,
-      magie: 55,
-      technique: 40,
-      vitesse: 40,
-      chance: 40,
-      defense: 40,
-      resistance: 40,
-      charisme: 40
+      force: 24,
+      magie: 22,
+      technique: 30,
+      vitesse: 31,
+      chance: 30,
+      defense: 20,
+      resistance: 22,
+      charisme: 0
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 30,
-      force: 85,
-      magie: 15,
-      technique: 30,
-      vitesse: 40,
-      chance: 20,
-      defense: 60,
-      resistance: 40,
-      charisme: 30
+      pointsVie: 80,
+      mouvement: 0,
+      force: 50,
+      magie: 25,
+      technique: 55,
+      vitesse: 55,
+      chance: 30,
+      defense: 20,
+      resistance: 20,
+      charisme: 50
     },
     montee: false,
     volante: false,
@@ -3855,7 +3871,7 @@ export class JobService {
     name: "myrmidon",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 0,
@@ -3879,7 +3895,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 90,
       magie: 20,
       technique: 35,
@@ -3901,7 +3917,7 @@ export class JobService {
     name: "mercenaire",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 0,
       technique: 0,
@@ -3925,7 +3941,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 35,
+      mouvement: 0,
       force: 90,
       magie: 25,
       technique: 45,
@@ -3947,7 +3963,7 @@ export class JobService {
     name: "bretteur",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 5,
@@ -3971,7 +3987,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 95,
       magie: 20,
       technique: 50,
@@ -3993,7 +4009,7 @@ export class JobService {
     name: "terreur",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 0,
       magie: 0,
       technique: 5,
@@ -4017,7 +4033,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 35,
+      mouvement: 0,
       force: 90,
       magie: 45,
       technique: 50,
@@ -4038,7 +4054,7 @@ export class JobService {
     name: "asura",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 0,
       technique: 0,
@@ -4062,7 +4078,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 30,
+      mouvement: 0,
       force: 100,
       magie: 30,
       technique: 55,
@@ -4085,7 +4101,7 @@ export class JobService {
     name: "yakasha",
     baseStats: {
       pointsVie: 0,
-      mouvement: 0,
+      mouvement: 2,
       force: 5,
       magie: 0,
       technique: 0,
@@ -4109,7 +4125,7 @@ export class JobService {
     },
     pourcentageIncrementGainNiveau: {
       pointsVie: 100,
-      mouvement: 35,
+      mouvement: 0,
       force: 95,
       magie: 55,
       technique: 50,
@@ -4134,20 +4150,20 @@ export class JobService {
     name: "chat",
     displayName: "Chat",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 15,
-      magie: 5,
-      technique: 10,
-      vitesse: 15,
-      chance: 5,
-      defense: 10,
-      resistance: 10,
-      charisme: 10
+      pointsVie: 22,
+      mouvement: 6,
+      force: 2,
+      magie: 1,
+      technique: 3,
+      vitesse: 8,
+      chance: 0,
+      defense: 3,
+      resistance: 1,
+      charisme: 0
     },
     maxStats: {
       pointsVie: 0,
-      mouvement: 10,
+      mouvement: 12,
       force: 220,
       magie: 220,
       technique: 160,
@@ -4158,16 +4174,16 @@ export class JobService {
       charisme: 160
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 35,
-      force: 75,
-      magie: 15,
-      technique: 25,
-      vitesse: 45,
-      chance: 30,
-      defense: 50,
-      resistance: 50,
-      charisme: 20
+      pointsVie: 70,
+      mouvement: 10,
+      force: 60,
+      magie: 30,
+      technique: 35,
+      vitesse: 35,
+      chance: 40,
+      defense: 40,
+      resistance: 40,
+      charisme: 30
     },
     jobsSuivants: [],
     montee: false,
@@ -4180,20 +4196,20 @@ export class JobService {
     name: "tigre",
     displayName: "Tigre",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 15,
-      magie: 5,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 15,
-      resistance: 10,
-      charisme: 10
+      pointsVie: 22,
+      mouvement: 6,
+      force: 2,
+      magie: 1,
+      technique: 3,
+      vitesse: 3,
+      chance: 0,
+      defense: 8,
+      resistance: 1,
+      charisme: 0
     },
     maxStats: {
       pointsVie: 0,
-      mouvement: 10,
+      mouvement: 12,
       force: 220,
       magie: 220,
       technique: 160,
@@ -4204,16 +4220,16 @@ export class JobService {
       charisme: 160
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 35,
-      force: 75,
-      magie: 15,
-      technique: 25,
+      pointsVie: 70,
+      mouvement: 10,
+      force: 60,
+      magie: 30,
+      technique: 35,
       vitesse: 35,
-      chance: 30,
-      defense: 65,
-      resistance: 50,
-      charisme: 20
+      chance: 40,
+      defense: 40,
+      resistance: 40,
+      charisme: 30
     },
     jobsSuivants: [],
     montee: false,
@@ -4226,20 +4242,20 @@ export class JobService {
     name: "lion",
     displayName: "Lion",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 20,
-      magie: 5,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 10,
-      resistance: 10,
-      charisme: 10
+      pointsVie: 22,
+      mouvement: 6,
+      force: 7,
+      magie: 1,
+      technique: 3,
+      vitesse: 3,
+      chance: 0,
+      defense: 3,
+      resistance: 1,
+      charisme: 0
     },
     maxStats: {
       pointsVie: 0,
-      mouvement: 10,
+      mouvement: 12,
       force: 225,
       magie: 220,
       technique: 160,
@@ -4250,16 +4266,16 @@ export class JobService {
       charisme: 160
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 35,
-      force: 85,
-      magie: 15,
-      technique: 25,
+      pointsVie: 70,
+      mouvement: 10,
+      force: 60,
+      magie: 30,
+      technique: 35,
       vitesse: 35,
-      chance: 30,
-      defense: 50,
-      resistance: 50,
-      charisme: 20
+      chance: 40,
+      defense: 40,
+      resistance: 40,
+      charisme: 30
     },
     jobsSuivants: [],
     montee: false,
@@ -4272,20 +4288,20 @@ export class JobService {
     name: "corbeau",
     displayName: "Corbeau",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 15,
-      magie: 5,
-      technique: 10,
-      vitesse: 15,
-      chance: 5,
-      defense: 10,
-      resistance: 10,
-      charisme: 10
+      pointsVie: 22,
+      mouvement: 6,
+      force: 2,
+      magie: 1,
+      technique: 3,
+      vitesse: 8,
+      chance: 0,
+      defense: 3,
+      resistance: 1,
+      charisme: 0
     },
     maxStats: {
       pointsVie: 0,
-      mouvement: 10,
+      mouvement: 12,
       force: 220,
       magie: 220,
       technique: 160,
@@ -4296,16 +4312,16 @@ export class JobService {
       charisme: 160
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 35,
-      force: 75,
-      magie: 15,
-      technique: 25,
-      vitesse: 45,
-      chance: 30,
-      defense: 50,
-      resistance: 50,
-      charisme: 20
+      pointsVie: 70,
+      mouvement: 10,
+      force: 60,
+      magie: 30,
+      technique: 35,
+      vitesse: 35,
+      chance: 40,
+      defense: 40,
+      resistance: 40,
+      charisme: 30
     },
     jobsSuivants: [],
     montee: false,
@@ -4318,20 +4334,20 @@ export class JobService {
     name: "faucon",
     displayName: "Faucon",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 20,
-      magie: 5,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 10,
-      resistance: 10,
-      charisme: 10
+      pointsVie: 22,
+      mouvement: 6,
+      force: 7,
+      magie: 1,
+      technique: 3,
+      vitesse: 3,
+      chance: 0,
+      defense: 3,
+      resistance: 1,
+      charisme: 0
     },
     maxStats: {
       pointsVie: 0,
-      mouvement: 10,
+      mouvement: 12,
       force: 225,
       magie: 220,
       technique: 160,
@@ -4342,16 +4358,16 @@ export class JobService {
       charisme: 160
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 35,
-      force: 85,
-      magie: 15,
-      technique: 25,
+      pointsVie: 70,
+      mouvement: 10,
+      force: 60,
+      magie: 30,
+      technique: 35,
       vitesse: 35,
-      chance: 30,
-      defense: 50,
-      resistance: 50,
-      charisme: 20
+      chance: 40,
+      defense: 40,
+      resistance: 40,
+      charisme: 30
     },
     jobsSuivants: [],
     montee: false,
@@ -4364,20 +4380,20 @@ export class JobService {
     name: "heron",
     displayName: "Héron",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 15,
-      magie: 5,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 10,
-      resistance: 15,
-      charisme: 10
+      pointsVie: 22,
+      mouvement: 6,
+      force: 2,
+      magie: 1,
+      technique: 3,
+      vitesse: 3,
+      chance: 0,
+      defense: 3,
+      resistance: 6,
+      charisme: 0
     },
     maxStats: {
       pointsVie: 0,
-      mouvement: 10,
+      mouvement: 12,
       force: 220,
       magie: 220,
       technique: 160,
@@ -4388,16 +4404,16 @@ export class JobService {
       charisme: 160
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 35,
-      force: 75,
-      magie: 15,
-      technique: 25,
+      pointsVie: 70,
+      mouvement: 10,
+      force: 60,
+      magie: 30,
+      technique: 35,
       vitesse: 35,
-      chance: 30,
-      defense: 50,
-      resistance: 65,
-      charisme: 20
+      chance: 40,
+      defense: 40,
+      resistance: 40,
+      charisme: 30
     },
     jobsSuivants: [],
     montee: false,
@@ -4410,20 +4426,20 @@ export class JobService {
     name: "dragonRouge",
     displayName: "Dragon Rouge",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 15,
-      magie: 5,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 15,
-      resistance: 10,
-      charisme: 10
+      pointsVie: 22,
+      mouvement: 6,
+      force: 2,
+      magie: 1,
+      technique: 3,
+      vitesse: 3,
+      chance: 0,
+      defense: 8,
+      resistance: 1,
+      charisme: 0
     },
     maxStats: {
       pointsVie: 0,
-      mouvement: 10,
+      mouvement: 12,
       force: 220,
       magie: 220,
       technique: 160,
@@ -4434,16 +4450,16 @@ export class JobService {
       charisme: 160
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 35,
-      force: 75,
-      magie: 15,
-      technique: 25,
+      pointsVie: 70,
+      mouvement: 10,
+      force: 60,
+      magie: 30,
+      technique: 35,
       vitesse: 35,
-      chance: 30,
-      defense: 65,
-      resistance: 50,
-      charisme: 20
+      chance: 40,
+      defense: 40,
+      resistance: 40,
+      charisme: 30
     },
     jobsSuivants: [],
     montee: false,
@@ -4456,20 +4472,20 @@ export class JobService {
     name: "dragonNoir",
     displayName: "dragonNoir",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 20,
-      magie: 5,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 10,
-      resistance: 10,
-      charisme: 10
+      pointsVie: 22,
+      mouvement: 6,
+      force: 7,
+      magie: 1,
+      technique: 3,
+      vitesse: 3,
+      chance: 0,
+      defense: 3,
+      resistance: 1,
+      charisme: 0
     },
     maxStats: {
       pointsVie: 0,
-      mouvement: 10,
+      mouvement: 12,
       force: 225,
       magie: 220,
       technique: 160,
@@ -4480,16 +4496,16 @@ export class JobService {
       charisme: 160
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 35,
-      force: 85,
-      magie: 15,
-      technique: 25,
+      pointsVie: 70,
+      mouvement: 10,
+      force: 60,
+      magie: 30,
+      technique: 35,
       vitesse: 35,
-      chance: 30,
-      defense: 50,
-      resistance: 50,
-      charisme: 20
+      chance: 40,
+      defense: 40,
+      resistance: 40,
+      charisme: 30
     },
     jobsSuivants: [],
     montee: false,
@@ -4502,20 +4518,20 @@ export class JobService {
     name: "dragonBlanc",
     displayName: "Dragon Blanc",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 15,
-      magie: 5,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 10,
-      resistance: 15,
-      charisme: 10
+      pointsVie: 22,
+      mouvement: 6,
+      force: 2,
+      magie: 1,
+      technique: 3,
+      vitesse: 3,
+      chance: 0,
+      defense: 3,
+      resistance: 6,
+      charisme: 0
     },
     maxStats: {
       pointsVie: 0,
-      mouvement: 10,
+      mouvement: 12,
       force: 220,
       magie: 220,
       technique: 160,
@@ -4526,16 +4542,16 @@ export class JobService {
       charisme: 160
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 35,
-      force: 75,
-      magie: 15,
-      technique: 25,
+      pointsVie: 70,
+      mouvement: 10,
+      force: 60,
+      magie: 30,
+      technique: 35,
       vitesse: 35,
-      chance: 30,
-      defense: 50,
-      resistance: 65,
-      charisme: 20
+      chance: 40,
+      defense: 40,
+      resistance: 40,
+      charisme: 30
     },
     jobsSuivants: [],
     montee: false,
@@ -4548,20 +4564,20 @@ export class JobService {
     name: "loup",
     displayName: "Loup",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 15,
-      magie: 5,
-      technique: 10,
-      vitesse: 15,
-      chance: 5,
-      defense: 10,
-      resistance: 10,
-      charisme: 10
+      pointsVie: 22,
+      mouvement: 6,
+      force: 2,
+      magie: 1,
+      technique: 3,
+      vitesse: 8,
+      chance: 0,
+      defense: 3,
+      resistance: 1,
+      charisme: 0
     },
     maxStats: {
       pointsVie: 0,
-      mouvement: 10,
+      mouvement: 12,
       force: 220,
       magie: 220,
       technique: 160,
@@ -4572,16 +4588,16 @@ export class JobService {
       charisme: 160
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 35,
-      force: 75,
-      magie: 15,
-      technique: 25,
-      vitesse: 45,
-      chance: 30,
-      defense: 50,
-      resistance: 50,
-      charisme: 20
+      pointsVie: 70,
+      mouvement: 10,
+      force: 60,
+      magie: 30,
+      technique: 35,
+      vitesse: 35,
+      chance: 40,
+      defense: 40,
+      resistance: 40,
+      charisme: 30
     },
     jobsSuivants: [],
     montee: false,
@@ -4594,20 +4610,20 @@ export class JobService {
     name: "ulfhedin",
     displayName: "Ulfhedin",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 20,
-      magie: 5,
-      technique: 10,
-      vitesse: 10,
-      chance: 5,
-      defense: 10,
-      resistance: 10,
-      charisme: 10
+      pointsVie: 22,
+      mouvement: 6,
+      force: 7,
+      magie: 1,
+      technique: 3,
+      vitesse: 3,
+      chance: 0,
+      defense: 3,
+      resistance: 1,
+      charisme: 0
     },
     maxStats: {
       pointsVie: 0,
-      mouvement: 10,
+      mouvement: 12,
       force: 225,
       magie: 220,
       technique: 160,
@@ -4618,16 +4634,16 @@ export class JobService {
       charisme: 160
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 35,
-      force: 85,
-      magie: 15,
-      technique: 25,
+      pointsVie: 70,
+      mouvement: 10,
+      force: 60,
+      magie: 30,
+      technique: 35,
       vitesse: 35,
-      chance: 30,
-      defense: 50,
-      resistance: 50,
-      charisme: 20
+      chance: 40,
+      defense: 40,
+      resistance: 40,
+      charisme: 30
     },
     jobsSuivants: [],
     montee: false,
@@ -4640,20 +4656,20 @@ export class JobService {
     name: "kitsune",
     displayName: "Kitsune",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 15,
-      magie: 5,
-      technique: 10,
-      vitesse: 15,
-      chance: 5,
-      defense: 10,
-      resistance: 10,
-      charisme: 10
+      pointsVie: 22,
+      mouvement: 6,
+      force: 2,
+      magie: 1,
+      technique: 3,
+      vitesse: 8,
+      chance: 0,
+      defense: 3,
+      resistance: 1,
+      charisme: 0
     },
     maxStats: {
       pointsVie: 0,
-      mouvement: 10,
+      mouvement: 12,
       force: 220,
       magie: 220,
       technique: 160,
@@ -4664,16 +4680,16 @@ export class JobService {
       charisme: 160
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 35,
-      force: 75,
-      magie: 15,
-      technique: 25,
-      vitesse: 45,
-      chance: 30,
-      defense: 50,
-      resistance: 50,
-      charisme: 20
+      pointsVie: 70,
+      mouvement: 10,
+      force: 60,
+      magie: 30,
+      technique: 35,
+      vitesse: 35,
+      chance: 40,
+      defense: 40,
+      resistance: 40,
+      charisme: 30
     },
     jobsSuivants: [],
     montee: false,
@@ -4681,25 +4697,25 @@ export class JobService {
     niveauMax: 80
   }
 
-  private targuel: Job = {
+  private taguel: Job = {
     rang: 0,
-    name: "targuel",
-    displayName: "Targüel",
+    name: "taguel",
+    displayName: "Tagüel",
     baseStats: {
-      pointsVie: 15,
-      mouvement: 5,
-      force: 15,
-      magie: 5,
-      technique: 10,
-      vitesse: 15,
-      chance: 5,
-      defense: 10,
-      resistance: 10,
-      charisme: 10
+      pointsVie: 22,
+      mouvement: 6,
+      force: 2,
+      magie: 1,
+      technique: 3,
+      vitesse: 8,
+      chance: 0,
+      defense: 3,
+      resistance: 1,
+      charisme: 0
     },
     maxStats: {
       pointsVie: 0,
-      mouvement: 10,
+      mouvement: 12,
       force: 220,
       magie: 220,
       technique: 160,
@@ -4710,16 +4726,16 @@ export class JobService {
       charisme: 160
     },
     pourcentageIncrementGainNiveau: {
-      pointsVie: 100,
-      mouvement: 35,
-      force: 75,
-      magie: 15,
-      technique: 25,
-      vitesse: 45,
-      chance: 30,
-      defense: 50,
-      resistance: 50,
-      charisme: 20
+      pointsVie: 70,
+      mouvement: 10,
+      force: 60,
+      magie: 30,
+      technique: 35,
+      vitesse: 35,
+      chance: 40,
+      defense: 40,
+      resistance: 40,
+      charisme: 30
     },
     jobsSuivants: [],
     montee: false,
@@ -4729,5 +4745,103 @@ export class JobService {
 
   //#endregion
 
+  //#region Barde
+
+  private barde: Job = {
+    rang: 0,
+    displayName: "Barde / Chanteur(euse) / Danseur(euse)",
+    name: "barde",
+    baseStats: {
+      pointsVie: 14,
+      mouvement: 4,
+      force: 1,
+      magie: 0,
+      technique: 2,
+      vitesse: 7,
+      chance: 0,
+      defense: 0,
+      resistance: 0,
+      charisme: 0
+    },
+    maxStats: {
+      pointsVie: 0,
+      mouvement: 10,
+      force: 220,
+      magie: 220,
+      technique: 160,
+      vitesse: 160,
+      chance: 160,
+      defense: 160,
+      resistance: 160,
+      charisme: 160
+    },
+    pourcentageIncrementGainNiveau: {
+      pointsVie: 75,
+      mouvement: 10,
+      force: 50,
+      magie: 30,
+      technique: 70,
+      vitesse: 70,
+      chance: 60,
+      defense: 25,
+      resistance: 25,
+      charisme: 50
+    },
+    montee: false,
+    volante: false,
+    niveauMax: 80,
+    jobsSuivants: []
+  }
+
+
   //#endregion
+  private base: Job = {
+    rang: -1,
+    displayName: "Aucun Job",
+    name: "base",
+    baseStats: {
+      pointsVie: 0,
+      mouvement: 0,
+      force: 0,
+      magie: 0,
+      technique: 0,
+      vitesse: 0,
+      chance: 0,
+      defense: 0,
+      resistance: 0,
+      charisme: 0
+    },
+    maxStats: {
+      pointsVie: 0,
+      mouvement: 0,
+      force: 0,
+      magie: 0,
+      technique: 0,
+      vitesse: 0,
+      chance: 0,
+      defense: 0,
+      resistance: 0,
+      charisme: 0
+    },
+    pourcentageIncrementGainNiveau: {
+      pointsVie: 0,
+      mouvement: 0,
+      force: 0,
+      magie: 0,
+      technique: 0,
+      vitesse: 0,
+      chance: 0,
+      defense: 0,
+      resistance: 0,
+      charisme: 0
+    },
+    montee: false,
+    volante: false,
+    niveauMax: 0,
+    jobsSuivants: []
+  }
+
+
+  //#endregion
+
 }

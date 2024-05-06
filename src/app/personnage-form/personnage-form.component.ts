@@ -95,10 +95,28 @@ export class PersonnageFormComponent implements OnInit {
 
   onChangeJobCLick(){
     this.personnage.UpgradeJob(this._nextJob!)
+    this._nextJob = undefined;
   }
   
   onPvActuelsChanged(newValue:number){
     this.personnage.pVActuels = newValue
+  }
+
+  onNouveauPersonnage(){
+    this.personnage = new Personnage("",0,0,"", this.jobService.DonnerJob("base"));
+    this.personnage.statsActuelles = {
+      pointsVie:0,
+      mouvement:0,
+      force:0,
+      magie:0,
+      technique:0,
+      vitesse:0,
+      chance:0,
+      defense:0,
+      resistance:0,
+      charisme:0
+
+    }
   }
 
 }
