@@ -93,6 +93,7 @@ export class Personnage {
         this.statsActuelles.resistance = Math.min(job.maxStats.resistance, this.statsActuelles.resistance + job.baseStats.resistance);
         this.statsActuelles.charisme = Math.min(job.maxStats.charisme, this.statsActuelles.charisme + job.baseStats.charisme);
         this.LevelUp();
+        this.niveau-=1;
         this.maxExperience += 100;
     }
 }
