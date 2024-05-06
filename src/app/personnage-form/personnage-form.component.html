@@ -1,6 +1,12 @@
 <section class="container">
     <section class="stats-container">
-        <h1>Personnage :</h1>
+        
+        <h1>Personnage : </h1>
+        <div class="new-character-button-section">
+            <button name="newCharacter" (click)="onNouveauPersonnage()">
+                Nouveau Personnage
+            </button>
+        </div>
         <ul>
             <li>Nom : {{personnage.nom}}</li>
             <li>Age : {{personnage.age}} ans</li>
@@ -25,7 +31,9 @@
                 <option *ngFor="let job of personnage.job.jobsSuivants" [ngValue]="job">{{job.displayName}}</option>
             </select>
             <button name="changeJob" (click)="onChangeJobCLick()"
-                [disabled]="personnage.niveau<personnage.job.niveauMax || !nextJob || !personnage.job.jobsSuivants.length">
+                [disabled]="!nextJob ||
+                                 personnage.niveau<nextJob.rang*20 ||
+                                  !personnage.job.jobsSuivants.length">
                 Changer Job
             </button>
         </div>
