@@ -115,8 +115,8 @@ export class PersonnageFormComponent implements OnInit {
       defense:0,
       resistance:0,
       charisme:0
-
     }
+    this.personnage.niveau = 0;
   }
 
 }

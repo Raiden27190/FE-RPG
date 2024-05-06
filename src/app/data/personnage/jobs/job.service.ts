@@ -4470,7 +4470,7 @@ export class JobService {
   private dragonNoir: Job = {
     rang: 0,
     name: "dragonNoir",
-    displayName: "dragonNoir",
+    displayName: "Dragon Noir",
     baseStats: {
       pointsVie: 22,
       mouvement: 6,
